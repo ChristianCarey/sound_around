@@ -11,7 +11,7 @@
   <body>
     <%= render 'shared/header' %>
     <%= render 'shared/flash' %>
-    <main id="main">
+    <main id="main" ng-app="soundAround" ng-controller="ArtistsCtrl"> 
       <%= yield %>
     </main> 
   </body>
