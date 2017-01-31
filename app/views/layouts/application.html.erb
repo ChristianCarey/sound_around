@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SoundAround</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <%= render 'shared/header' %>
+    <%= render 'shared/flash' %>
+    <main id="main">
+      <%= yield %>
+    </main> 
+  </body>
+</html>
