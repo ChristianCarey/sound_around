@@ -1,6 +1,6 @@
 <section id="show-artist">
   <div class="row">
-    <div class="title">
+    <div class="title show-artist-title">
       <h1 class="name">{{ artist.name }}</h1>
     </div>
     <div class="col-sm-6 no-padding">      
@@ -8,15 +8,31 @@
         <img class="main-image" ng-src="{{artist.image_url}}">
       </div>
     </div>
-    <div class="col-sm-6 artist-info">
-      {{ artist.events.length }} upcoming event{{ artist.events.length === 1 ? '' : 's' }}.
+    <div class="col-sm-6 artist-info-container">
+      <div class="artist-info">
+        <h2 class="num-events" ng-if="artist.events.length">
+          {{ artist.events.length }} upcoming event{{ artist.events.length === 1 ? '' : 's' }}.
+        </h2>
+        <h2 class="num-events no-events" ng-if="!artist.events.length">
+          No upcoming events.
+        </h2>
+        <input type="text" name="eventFilter" class="text-input" ng-model="eventFilter" placeholder="venue, city, etc...">
+        <div class="row order-buttons">
+          <div class="col-xs-6">
+            <button class="btn-main btn-okay {{eventOrder === 'datetime' ? 'active' : 'inactive'}}" ng-click="setEventOrder('datetime')">Soonest First</button>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn-main btn-okay {{eventOrder === 'miles_away' ? 'active' : 'inactive'}}" ng-click="setEventOrder('miles_away')">Closest First</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
       <div class="row">
         <ul id="artist-events">
-          <li ng-repeat="event in artist.events">
+          <li ng-repeat="event in artist.events | filter : eventFilter | orderBy : eventOrderString">
             <div class="clearfix" ng-if="$index % 3 === 0"></div>
             <div class="col-sm-4 event-small">
               <p class="event-small-top">
@@ -28,13 +44,13 @@
                 {{ event.datetime | date }}
               </p>
               <p>
-                {{ event.venue.city }}, {{ event.venue.region }}
+                {{ event.venue.city }}, {{ event.venue.region }} {{ event.venue.country }}
               </p>
               <p>
                 {{ event.venue.miles_away | number : 1}} miles away.
               </p>
               <a  ng-if="event.ticket_status === 'available'" href="{{ event.ticket_url }}" target="_blank">
-                <button class="btn-small btn-good">
+                <button class="btn-small btn-good btn-buy-ticket">
                   Buy tickets
                 </button>
               </a>
@@ -42,9 +58,6 @@
             </div>
           </li>
         </ul>
-        <p ng-if="!artist.events.length">
-          No upcoming events.
-        </p>
       </div>
     </div>
   </div>

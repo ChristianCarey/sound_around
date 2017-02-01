@@ -156,9 +156,23 @@ body {
 
 .btn-okay {
   background: #FFC964;
-
+  color: black;
   &:hover {
     background: darken(#FFC964, 15%);
+  }
+}
+
+.btn-okay.active {
+  background: darken(#FFC964, 25%);
+  color: white;
+}
+
+.btn-okay.inactive {
+  background: lighten(#FFC964, 5%);
+  color: #555;
+
+  &:hover {
+    background:#FFC964;
   }
 }
 
@@ -178,17 +192,22 @@ body {
   }
 }
 
+.btn-buy-ticket {
+  margin-top: .5em;
+}
+
 .artist-small {
   display: flex;
   align-items: center;
   padding: .5em;
   border-bottom: 1px solid #ddd;
+  
   .thumb {
     width: 100px;
   }
 
   .info {
-    padding: .5em;
+    padding: 2em;
 
     p {
       margin-bottom: .5em;
@@ -206,23 +225,59 @@ body {
   height: 100%;
 }
 
+.no-artists {
+  padding: 6em;
+  text-align: center;
+
+  .tagline {
+    color: #FF8F00;
+    font-size: 1.3em;
+  }
+}
+
 #show-artist {
   .main-image-container {
     width: 100%;
+    max-height: 400px;
+    overflow-y: hidden;
 
     .main-image {
       width: 100%;
     }
   }
 
+  .title {
+    background: #222;
+    border-bottom: 1px solid black;
+  }
+
   .name {
-    color: black;
+    color: #FF8F00;
     margin: 0;
   }
 }
 
+.artist-info-container {
+  padding: 2em;
+  padding-top: 4em;
+}
+
+.order-buttons {
+  margin-top: 3em;
+}
+
 #artist-events {
   padding-top: 1em;
+}
+
+.num-events {
+  font-size: 1.3em;
+  color: #2ca03b;
+  margin-bottom: 1em;
+}
+
+.no-events {
+  color: #ff3d33;
 }
 
 .event-small {

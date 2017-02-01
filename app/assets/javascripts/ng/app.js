@@ -29,6 +29,12 @@ soundAround.config(['$stateProvider', '$urlRouterProvider',
       .state('artists.show', {
         url: '/show/:id',
         templateUrl: '/templates/artists/show.html',
-        controller: 'ArtistShowCtrl'
+        controller: 'ArtistShowCtrl',
+        resolve: {
+          artist: ['$stateParams', 'artistService',
+            function($stateParams, artistService) {
+              return artistService.find($stateParams.id)
+            }]
+        }
       })
   }]);

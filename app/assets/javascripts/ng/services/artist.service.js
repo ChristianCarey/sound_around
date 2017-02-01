@@ -6,6 +6,10 @@ soundAround.factory('artistService', ['Restangular',
         .then(_setArtists);
     }
 
+    var find = function(id) {
+      return Restangular.one('artists', id).get();
+    }
+
     var _artists;
 
     var _create = function(params){
@@ -17,17 +21,16 @@ soundAround.factory('artistService', ['Restangular',
     }
 
     var _remove = function(id) {
-      console.log('deleting. id:', id)
       return Restangular.one('artists', id).remove()
         .then(function(artist) {
           var index = _artists.indexOf(artist);
-          _artists.splice(index, 1)
+          _artists.splice(index, 1);
+          return artist
         });
     }
 
     var _setArtists = function(artists) {
       _artists = artists;
-      console.log(_artists)
       return _artists;
     };
 
@@ -38,7 +41,8 @@ soundAround.factory('artistService', ['Restangular',
     })
 
     return {
-      all: all
+      all: all,
+      find: find
     }
 
   }]);

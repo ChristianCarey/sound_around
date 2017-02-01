@@ -1,8 +1,5 @@
 <div class="wrapper shadow container">
   <div class="row">
-    <div class="title">
-      <h2 id="tagline">Never miss out.</h2>
-    </div>
     <div class="col-sm-4 artist-selector">
       <div class="form-container">  
         <form name="createArtistForm" ng-submit="createArtist()" class="form">
@@ -35,7 +32,9 @@
       </ul>
     </div>
     <ui-view class="col-sm-8">
-      Select an artist to view events.
+      <div ng-if="!artists.length" class="no-artists">
+        <h2 class="tagline">Never miss out again. Start by adding your favorite artists.</h2>
+      </div>
     </ui-view>
   </div>
 </div>
