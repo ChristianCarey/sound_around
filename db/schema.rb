@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131062136) do
+ActiveRecord::Schema.define(version: 20170201041055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(version: 20170131062136) do
     t.string   "name"
     t.string   "image_url"
     t.string   "thumb_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.datetime "events_updated_at"
     t.index ["name"], name: "index_artists_on_name", unique: true, using: :btree
   end
 
@@ -53,6 +54,8 @@ ActiveRecord::Schema.define(version: 20170131062136) do
     t.string   "rsvp_url"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "remote_id"
+    t.index ["remote_id"], name: "index_events_on_remote_id", unique: true, using: :btree
     t.index ["venue_id"], name: "index_events_on_venue_id", using: :btree
   end
 
@@ -71,7 +74,10 @@ ActiveRecord::Schema.define(version: 20170131062136) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.float    "lat"
+    t.float    "lng"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["lat", "lng"], name: "index_users_on_lat_and_lng", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 

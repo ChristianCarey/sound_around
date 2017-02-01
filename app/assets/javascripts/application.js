@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-grid
 //= require angular
 //= require angular-devise
 //= require underscore

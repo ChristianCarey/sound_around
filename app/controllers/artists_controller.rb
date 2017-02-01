@@ -10,9 +10,10 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
+    @artist.update_events
 
     respond_to do |format|
-      format.json { render json: @artist }
+      format.json 
     end
   end
 
@@ -25,6 +26,12 @@ class ArtistsController < ApplicationController
     end
   end
 
-  def new 
+  def destroy
+    @artist = Artist.find(params[:id]);
+    current_user.artists.delete(@artist)
+
+    respond_to do |format|
+      format.json { render json: current_user.artists }
+    end
   end
 end

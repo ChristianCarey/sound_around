@@ -15,3 +15,20 @@ soundAround.config(
       .headers
       .common['X-CSRF-Token'] = token;
   }]);
+
+soundAround.config(['$stateProvider', '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/artists');
+    
+    $stateProvider
+      .state('artists', {
+        url: '/artists',
+        templateUrl: '/templates/artists/index.html',
+        controller: 'ArtistIndexCtrl'
+      })
+      .state('artists.show', {
+        url: '/show/:id',
+        templateUrl: '/templates/artists/show.html',
+        controller: 'ArtistShowCtrl'
+      })
+  }]);

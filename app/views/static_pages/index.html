@@ -1,22 +1,2 @@
-<div class="form-container">  
-  <div class="form-title">
-    <h2 id="tagline">Never miss out.</h2>
-  </div>
-  <form name="createArtist" ng-submit="postArtist()" class="form">
-    <div class="field">
-      <label for="favorite-field" class="text-label">
-        Search for an artist.
-      </label>
-      <input type="text" name="favorite" placeholder="Paul Simon, Art Garfunkel, etc.." class="text-input" ng-model="newArtist.name">
-    </div>
-    <input type="submit" value="Add to favorites" class="btn-primary">
-  </form>
-</div>
-
-<div class="form-container"> 
-  <ul>
-    <li ng-repeat="artist in artists">
-      {{ artist.name }}
-    </li>
-  </ul>
-</div>
+<ui-view>
+</ui-view>

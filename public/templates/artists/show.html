@@ -1,0 +1,51 @@
+<section id="show-artist">
+  <div class="row">
+    <div class="title">
+      <h1 class="name">{{ artist.name }}</h1>
+    </div>
+    <div class="col-sm-6 no-padding">      
+      <div class="main-image-container">
+        <img class="main-image" ng-src="{{artist.image_url}}">
+      </div>
+    </div>
+    <div class="col-sm-6 artist-info">
+      {{ artist.events.length }} upcoming event{{ artist.events.length === 1 ? '' : 's' }}.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <ul id="artist-events">
+          <li ng-repeat="event in artist.events">
+            <div class="clearfix" ng-if="$index % 3 === 0"></div>
+            <div class="col-sm-4 event-small">
+              <p class="event-small-top">
+                <span class="venue-name">
+                  {{event.venue.name}}
+                </span>
+              </p>
+              <p>
+                {{ event.datetime | date }}
+              </p>
+              <p>
+                {{ event.venue.city }}, {{ event.venue.region }}
+              </p>
+              <p>
+                {{ event.venue.miles_away | number : 1}} miles away.
+              </p>
+              <a  ng-if="event.ticket_status === 'available'" href="{{ event.ticket_url }}" target="_blank">
+                <button class="btn-small btn-good">
+                  Buy tickets
+                </button>
+              </a>
+              <span ng-if="event.ticket_status !== 'available'" class="text-bad">Sold out.</span>
+            </div>
+          </li>
+        </ul>
+        <p ng-if="!artist.events.length">
+          No upcoming events.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

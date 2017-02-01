@@ -1,4 +1,4 @@
-
+@import 'bootstrap-grid';
 html {
   min-height: 100%;
   background: radial-gradient(#FFF176, #F57F17);
@@ -12,12 +12,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#nav-pusher {
+  height: 50px;
+}
+
 #nav {
-  background: rgba(230, 100, 0, .35);
-  padding: 1em;
+  // background: rgba(230, 100, 0, .35);
+  background: rgba(0, 0, 0, .80);
   display: flex;
   align-items: center;
   border-bottom: 1px solid #C65600;
+  z-index: 1000;
+  padding: 0 2em;
+  position: fixed;
+  width: 100%;
+  height: 50px;
 
   .nav-links {
     margin-left: auto;
@@ -36,16 +45,15 @@ body {
 
 #brand-name {
   font-size: 1.5em;
-  color: #000A01;
+  // color: #000A01;
+  color: white;
 }
 
 #main {
-  max-width: 960px;  
-  margin: 0 auto;
   padding: 2em;
 }
 
-.form-title {
+.title {
   text-align: center;
   color: #FF8F00;
   font-size: 1.2em;
@@ -54,17 +62,25 @@ body {
   text-transform: uppercase;
   border-bottom: 1px solid #ddd;
   padding: 1em 0 .7em;
+  z-index: 1000;
 }
 
 .form-container {
   max-width: 530px;
-  margin: 0 auto;
-  background: white;
   text-align: center;  
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.wrapper {
+  background: white;
   color: #666;
+}
+
+.shadow {
   box-shadow: 0px 50px 30px -30px rgba(0,0,0,0.3);
-  
-  
 }
 
 .field {
@@ -111,7 +127,7 @@ body {
   }
 }
 
-.btn-primary {
+.btn-main {
   padding: .8em 1.6em;
   border-radius: 3px;
   background: #FF6F00;
@@ -127,6 +143,105 @@ body {
   }
 }
 
+.btn-small {
+  padding: .6em;
+  border-radius: 1px;
+  border-width: 0;
+  color: black;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: .7em;
+  letter-spacing: 1px;
+}
+
+.btn-okay {
+  background: #FFC964;
+
+  &:hover {
+    background: darken(#FFC964, 15%);
+  }
+}
+
+.btn-good {
+  background: #73d980;
+
+  &:hover {
+    background: darken(#73d980, 15%);
+  }
+}
+
+.btn-bad {
+  background: #ff7770;
+
+  &:hover {
+    background: darken(#ff7770, 15%);
+  }
+}
+
+.artist-small {
+  display: flex;
+  align-items: center;
+  padding: .5em;
+  border-bottom: 1px solid #ddd;
+  .thumb {
+    width: 100px;
+  }
+
+  .info {
+    padding: .5em;
+
+    p {
+      margin-bottom: .5em;
+    }
+  }
+}
+
+.last-artist {
+  border-bottom: none;
+}
+
+.artist-selector {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  height: 100%;
+}
+
+#show-artist {
+  .main-image-container {
+    width: 100%;
+
+    .main-image {
+      width: 100%;
+    }
+  }
+
+  .name {
+    color: black;
+    margin: 0;
+  }
+}
+
+#artist-events {
+  padding-top: 1em;
+}
+
+.event-small {
+  padding: 1em;
+  .venue-name {
+    text-transform: uppercase;
+    color: black;
+  }
+}
+
+.event-small-top {
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+.text-bad {
+  color: #ff554d;
+}
+
 .alert {
   padding: 1em 8em;
 }
@@ -139,4 +254,9 @@ body {
 .alert-danger, .alert-alert {
   background: rgba(255, 119, 112, 0.5);
   border-bottom: 1px solid #b30900;
+}
+
+.no-padding {
+   padding: 0 !important;
+   margin: 0 !important;
 }

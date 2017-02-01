@@ -1,0 +1,41 @@
+<div class="wrapper shadow container">
+  <div class="row">
+    <div class="title">
+      <h2 id="tagline">Never miss out.</h2>
+    </div>
+    <div class="col-sm-4 artist-selector">
+      <div class="form-container">  
+        <form name="createArtistForm" ng-submit="createArtist()" class="form">
+          <div class="field">
+            <label for="favorite-field" class="text-label">
+              Search for an artist.
+            </label>
+            <input type="text" name="favorite" placeholder="Paul Simon, Art Garfunkel, etc.." class="text-input" ng-model="newArtist.name">
+          </div>
+          <input type="submit" value="Add to favorites" class="btn-main">
+        </form>
+      </div> 
+      <ul>
+        <li ng-repeat="artist in artists" class="artist-small" ng-class="{'last-artist': $last}">
+          <div class="image-container">
+            <img ng-src="{{artist.thumb_url}}" class="thumb">
+          </div>
+          <div class="info">
+            <p>{{ artist.name }}</p>
+            <div>
+              <button class="btn-small btn-okay" ui-sref="artists.show({id: artist.id})">
+                Show
+              </button>
+              <button class="btn-small btn-bad" ng-click="removeArtist($event, artist.id, $index)">
+                Remove
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ui-view class="col-sm-8">
+      Select an artist to view events.
+    </ui-view>
+  </div>
+</div>

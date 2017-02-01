@@ -1,3 +1,22 @@
 // Place all the styles related to the Artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show-artist {
+  .name {
+    font-size: 1.3em;
+    margin-bottom: .6em;
+  }
+
+  .main-image-container {
+    width: 400px;
+    border: 1px solid #ccc;
+    font-size: 0;
+
+  }
+
+  .main-image {
+    width: 100%;
+    border: 2px solid #ddd;
+  }
+}
