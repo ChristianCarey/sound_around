@@ -152,11 +152,16 @@ body {
   cursor: pointer;
   font-size: .7em;
   letter-spacing: 1px;
+
+  &:focus {
+    outline:0;
+  }
 }
 
 .btn-okay {
   background: #FFC964;
   color: black;
+  transition: all .3s ease;
   &:hover {
     background: darken(#FFC964, 15%);
   }
@@ -164,7 +169,12 @@ body {
 
 .btn-okay.active {
   background: darken(#FFC964, 25%);
+  transform: scale(1.1);
   color: white;
+
+  &:focus {
+    outline:0;
+  }
 }
 
 .btn-okay.inactive {
@@ -189,6 +199,23 @@ body {
 
   &:hover {
     background: darken(#ff7770, 15%);
+  }
+}
+
+.btn-pair {
+  text-align: center;
+  .btn-left {
+    border-radius: 1px 0 0 1px;
+    font-size: .7em;
+    transform-origin: 0;
+    transform-origin: right;
+  }
+
+  .btn-right {
+    border-radius: 0px 1px 1px 0;
+    font-size: .7em;
+    transform-origin: 0;
+    transform-origin: left;
   }
 }
 
@@ -220,8 +247,6 @@ body {
 }
 
 .artist-selector {
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
   height: 100%;
 }
 
@@ -286,6 +311,11 @@ body {
     text-transform: uppercase;
     color: black;
   }
+}
+
+.hide-button-container {
+  padding: 3em;
+  text-align: center;
 }
 
 .event-small-top {
