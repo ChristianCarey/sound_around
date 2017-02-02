@@ -10,19 +10,19 @@
     </div>
     <div class="col-sm-6 artist-info-container">
       <div class="artist-info">
-        <h2 class="num-events" ng-if="artist.events.length">
-          {{ artist.events.length }} upcoming event{{ artist.events.length === 1 ? '' : 's' }}.
+        <h2 class="num-events" ng-if="numEvents">
+          Found {{ numEvents }} upcoming event{{ numEvents === 1 ? '' : 's' }}.
         </h2>
-        <h2 class="num-events no-events" ng-if="!artist.events.length">
-          No upcoming events.
+        <h2 class="num-events no-events" ng-if="!numEvents">
+          Found no upcoming events.
         </h2>
         <input type="text" name="eventFilter" class="text-input" ng-model="eventFilter" placeholder="venue, city, etc...">
         <div class="order-buttons btn-pair">
           <button class="btn-main btn-okay btn-left {{eventOrder === 'datetime' ? 'active' : 'inactive'}}" ng-click="setEventOrder('datetime')">Soonest First</button><button class="btn-main btn-okay btn-right {{eventOrder === 'miles_away' ? 'active' : 'inactive'}}" ng-click="setEventOrder('miles_away')">Closest First</button>
         </div>
         <div class="hide-button-container">
-          <button class="btn-main btn-bad" ng-show="soldOutShowing" ng-click="hideSoldOut()">Hide Sold Out Events</button>
-          <button class="btn-main btn-good" ng-show="!soldOutShowing" ng-click="showSoldOut()">Show Sold Out Events</button>
+          <button class="btn-main btn-bad btn-wide fade-in-out" ng-show="soldOutShowing" ng-click="hideSoldOut()">Hide Sold Out Events</button>
+          <button class="btn-main btn-good btn-wide fade-in-out" ng-show="!soldOutShowing" ng-click="showSoldOut()">Show Sold Out Events</button>
         </div>
       </div>
     </div>

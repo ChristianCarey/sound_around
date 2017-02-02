@@ -1,6 +1,7 @@
 soundAround.controller('ArtistShowCtrl', ['$scope', '$stateParams', 'artist',
   function($scope, $stateParams, artist) {
     var allEvents = angular.copy(artist.events);
+    $scope.numEvents = allEvents.length;
     $scope.artist = artist;
     $scope.eventOrder = 'datetime';
     $scope.soldOutShowing = true;

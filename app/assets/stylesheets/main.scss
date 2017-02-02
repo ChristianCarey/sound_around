@@ -17,7 +17,6 @@ body {
 }
 
 #nav {
-  // background: rgba(230, 100, 0, .35);
   background: rgba(0, 0, 0, .80);
   display: flex;
   align-items: center;
@@ -27,12 +26,66 @@ body {
   position: fixed;
   width: 100%;
   height: 50px;
+  color: white;
 
+  
+  .icon {
+    font-size: 1.2em;
+  }
   .nav-links {
     margin-left: auto;
+    height: 100%;
+    line-height: 50px;
     li {
-      display: inline;
+      display: inline-block;
       padding: 0 .3em;
+    }
+
+    .user-location {
+      padding-right: 3em;
+    } 
+
+    .dropdown-open {
+      perspective: 1000px;
+      position: relative;
+
+      &:hover > #dropdown li {
+        display: block;        
+      }
+    }
+
+    .username {
+      padding-right: 3em;
+      cursor: pointer;
+    }
+
+    #dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      padding: 0;
+
+      li {
+        background: rgba(0, 0, 0, .80);
+        width: 155px;
+        display: none;
+        animation: dropdown 0.3s ease-in-out;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        transform-origin: top center;
+        transition: 0.3s ease all;
+
+        &:hover {
+          background: rgba(50, 50, 50, .80);
+        }
+
+        @for $i from 1 to 3 {
+          &:nth-child(#{$i}) {
+            animation-delay: (0.15s * $i) - 0.15s;
+          }
+        }
+      }
     }
   }
 
@@ -41,6 +94,13 @@ body {
     text-decoration: none;
     font-size: 1.1em;
   }
+}
+
+#user-location-edit {
+  background: none;
+  border: none;
+  height: 50px;
+  outline: 0;
 }
 
 #brand-name {
@@ -141,6 +201,10 @@ body {
   &:hover {
     background: darken(#FF6F00, 5%);
   }
+
+  &:focus {
+    outline:0;
+  }
 }
 
 .btn-small {
@@ -158,10 +222,14 @@ body {
   }
 }
 
+.btn-wide {
+  width: 100%;
+}
+
 .btn-okay {
   background: #FFC964;
   color: black;
-  transition: all .3s ease;
+  transition: .4s ease all;
   &:hover {
     background: darken(#FFC964, 15%);
   }
@@ -169,7 +237,7 @@ body {
 
 .btn-okay.active {
   background: darken(#FFC964, 25%);
-  transform: scale(1.1);
+  border: 1px solid darken(#FFC964, 45%);
   color: white;
 
   &:focus {
@@ -180,6 +248,7 @@ body {
 .btn-okay.inactive {
   background: lighten(#FFC964, 5%);
   color: #555;
+  border: none;
 
   &:hover {
     background:#FFC964;
@@ -188,6 +257,7 @@ body {
 
 .btn-good {
   background: #73d980;
+  color: black;
 
   &:hover {
     background: darken(#73d980, 15%);
@@ -196,6 +266,7 @@ body {
 
 .btn-bad {
   background: #ff7770;
+  color: black;
 
   &:hover {
     background: darken(#ff7770, 15%);
@@ -204,17 +275,19 @@ body {
 
 .btn-pair {
   text-align: center;
-  .btn-left {
+  
+  .btn-main {
     border-radius: 1px 0 0 1px;
     font-size: .7em;
     transform-origin: 0;
+    width: 50%;
+  }
+
+  .btn-left {
     transform-origin: right;
   }
 
   .btn-right {
-    border-radius: 0px 1px 1px 0;
-    font-size: .7em;
-    transform-origin: 0;
     transform-origin: left;
   }
 }
@@ -285,6 +358,7 @@ body {
 .artist-info-container {
   padding: 2em;
   padding-top: 4em;
+  text-align: center;
 }
 
 .order-buttons {
@@ -314,8 +388,14 @@ body {
 }
 
 .hide-button-container {
-  padding: 3em;
+  padding: 3em 1em 1em 1em;
   text-align: center;
+  position: relative;
+
+  button {
+    position: absolute;
+    left: 0;
+  }
 }
 
 .event-small-top {
@@ -344,4 +424,37 @@ body {
 .no-padding {
    padding: 0 !important;
    margin: 0 !important;
+}
+
+.fade-in-out.ng-hide-add, .fade-in-out.ng-hide-add {
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+  display: block !important;
+}
+
+.fade-in-out.ng-hide-add.ng-hide-add-active,
+.fade-in-out.ng-hide-remove, {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-in-out.ng-hide-add,
+.fade-in-out.ng-hide-remove.ng-hide-remove.active {
+  opacity: 1;
+}
+
+@keyframes dropdown {
+  0% {
+    opacity: 1;
+    transform: rotateX(-90deg);
+  }
+  60% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
 }

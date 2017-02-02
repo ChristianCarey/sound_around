@@ -1,4 +1,4 @@
-var soundAround = angular.module('soundAround', ['ui.router', 'restangular']);
+var soundAround = angular.module('soundAround', ['ui.router', 'restangular', 'ngAnimate', 'Devise']);
 
 soundAround.config(['RestangularProvider', function(RestangularProvider) {
   RestangularProvider.setBaseUrl('/api/v1');

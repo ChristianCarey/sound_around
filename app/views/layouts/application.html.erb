@@ -5,12 +5,13 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body ng-app="soundAround">
     <%= render 'shared/header' %>
-    <main id="main" ng-app="soundAround"> 
+    <main id="main"> 
       <%= yield %>
     </main> 
   </body>

@@ -21,6 +21,14 @@
     </div>
 
     <div class="field">
+      <%= f.label :location_string, class: 'text-label' do %>
+        Location
+        <em>(City or address)</em>
+      <% end %>
+      <%= f.text_field :location_string, class: 'text-input' %>
+    </div>
+
+    <div class="field">
       <%= f.label :password, class: 'text-label' do %>
         Password
         <% if @minimum_password_length %>

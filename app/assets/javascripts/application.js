@@ -18,4 +18,5 @@
 //= require underscore
 //= require restangular
 //= require ui-router
+//= require ng-animate
 //= require_tree .
