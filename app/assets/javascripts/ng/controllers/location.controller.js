@@ -16,7 +16,7 @@ soundAround.controller('LocationCtrl', ['$scope', 'Auth', '$document', '$timeout
       document.getElementById('dropdown').style.display = 'none';
       $timeout(function() {
         document.getElementById('dropdown').style.display = 'block';
-      });
+      }, 200);
       $scope.editingLocation = true;
     }
 

@@ -13,11 +13,21 @@ class LocationRequest
 
   def scrub(json)
     location = JSON.parse(json)
-    {
-      formatted: location['results'][0]['formatted_address'],
-      lat: location['results'][0]['geometry']['location']['lat'],
-      lng: location['results'][0]['geometry']['location']['lng'] * -1
-    }
+    scrubbed = {}
+    if location['status'] == "ZERO_RESULTS" || location['results'].empty?
+      scrubbed = {
+        formatted: "No location found",
+        lat: nil,
+        lng: 0
+      }
+    else
+      scrubbed = {
+        formatted: location['results'][0]['formatted_address'],
+        lat: location['results'][0]['geometry']['location']['lat'],
+        lng: location['results'][0]['geometry']['location']['lng'] * -1
+      }
+    end
+    scrubbed
   end
 
   def fetch(location_name)

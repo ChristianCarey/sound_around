@@ -12,7 +12,6 @@ soundAround.controller('ArtistIndexCtrl', ['$scope', 'Restangular', '$state', 'a
     }
 
     var _showArtist = function(artist) {
-      console.log(artist)
       $state.go('artists.show', { id: artist.id }, { relative: 'artists', reload: true })
     }
 
@@ -36,6 +35,10 @@ soundAround.controller('ArtistIndexCtrl', ['$scope', 'Restangular', '$state', 'a
 
     var _setArtists = function(artists) {
       $scope.artists = artists;
+      console.log($scope.artists)
+      // if ($scope.artists.length) {
+      //   _showArtist($scope.artists[0])
+      // }
     }
 
     _getArtists();
