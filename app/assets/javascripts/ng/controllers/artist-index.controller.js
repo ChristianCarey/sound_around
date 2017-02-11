@@ -12,15 +12,13 @@ soundAround.controller('ArtistIndexCtrl', ['$scope', 'Restangular', '$state', 'a
     }
 
     var _showArtist = function(artist) {
-      $state.go('artists.show', { id: artist.id }, { relative: 'artists', reload: true })
+      $state.go('artists.show', { id: artist.id }, { relative: 'artists'})
     }
 
     var _removeArtist = function(artist) {
       _getArtists().then(function() {
         if ($stateParams.id === artist.id) {
           if ($scope.artists.length) {
-            console.log('going to artist page')
-            console.log($scope.artists)
             $state.go('artists.show', { id: $scope.artists[0].id }, { relative: 'artists' })
           } else {
             $state.go('artists')
@@ -35,11 +33,11 @@ soundAround.controller('ArtistIndexCtrl', ['$scope', 'Restangular', '$state', 'a
 
     var _setArtists = function(artists) {
       $scope.artists = artists;
-      console.log($scope.artists)
-      // if ($scope.artists.length) {
-      //   _showArtist($scope.artists[0])
-      // }
+      if ($scope.artists.length) {
+        _showArtist($scope.artists[0])
+      }
     }
+
 
     _getArtists();
   }]);

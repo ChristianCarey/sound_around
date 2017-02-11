@@ -2,8 +2,16 @@
   <h1 id="brand-name">Sound Around</h1>
     <% if user_signed_in? %>
       <form ng-submit="updateLocation()" class="user-location">
-        <i class="icon fa fa-map-marker" aria-hidden="true"></i>&nbsp;
-        <input ng-model="currentUser.location" ng-blur="updateLocation()" on-enter="updateLocation()" type="text" name="location" id="user-location-edit" autocomplete="off">
+        <div class="location-input-container">
+          <input ng-focus="editLocation($event)"
+                 ng-model="currentUser.location" 
+                 ng-blur="updateLocation()" 
+                 on-enter="updateLocation()" 
+                 type="text" 
+                 name="location" 
+                 id="user-location-edit" 
+                 autocomplete="off">
+          </div>
       </form>
     <% end %>
   <ul class="nav-links">

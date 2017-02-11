@@ -1,5 +1,5 @@
-soundAround.controller('ArtistShowCtrl', ['$scope', '$stateParams', 'artist',
-  function($scope, $stateParams, artist) {
+soundAround.controller('ArtistShowCtrl', ['$scope', '$stateParams', 'artist', 'artistService',
+  function($scope, $stateParams, artist, artistService) {
     var allEvents = angular.copy(artist.events);
     $scope.numEvents = allEvents.length;
     $scope.artist = artist;
@@ -30,4 +30,11 @@ soundAround.controller('ArtistShowCtrl', ['$scope', '$stateParams', 'artist',
       })
       angular.copy(notSoldOut, $scope.artist.events)
     }
+
+    $scope.$on('updateUser', function(e, user) {
+      artistService.find($scope.artist.id)
+        .then(function(artist) {
+          $scope.artist = artist;
+        })
+    })
   }]);

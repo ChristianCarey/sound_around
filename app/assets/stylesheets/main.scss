@@ -32,6 +32,21 @@ body {
   .icon {
     font-size: 1.2em;
   }
+
+  .user-location {
+    flex-grow: 1;
+  } 
+
+  .location-input-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1em;
+    justify-content: center;
+  }
+
+
+
   .nav-links {
     height: 100%;
     line-height: 50px;
@@ -39,10 +54,6 @@ body {
       display: inline-block;
       padding: 0 .3em;
     }
-
-    .user-location {
-      padding-right: 3em;
-    } 
 
     .dropdown-open {
       perspective: 1000px;
@@ -103,6 +114,8 @@ body {
   border: none;
   height: 50px;
   outline: 0;
+  width: 100%;
+  text-align: center;
 }
 
 #brand-name {
