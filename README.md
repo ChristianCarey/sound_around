@@ -1,6 +1,6 @@
 # Sound Around
 
-[SoundAround](sound-around.herokuapp.com) is a location-based web application for keeping track of your favorite artists.
+[SoundAround](https://sound-around.herokuapp.com) is a location-based web application for keeping track of your favorite artists.
 
 ## Technology
 
@@ -14,11 +14,12 @@ Styling is mostly custom, using a minimal amount of bootstrap's grid system.
 
 ## Live version
 
-Visit [sound-around.herokuapp.com](sound-around.herokuapp.com) to see a fully functional live version. This is hosted on a free Heroku dyno, so please allow several seconds for inital page load.
+Visit [sound-around.herokuapp.com](https://sound-around.herokuapp.com) to see a fully functional live version. This is hosted on a free Heroku dyno, so please allow several seconds for inital page load.
 
 Create an acccount, or sign into the example account with the following credentials: 
 
 Email: user@example.com
+
 Password: password
 
 ## Usage
